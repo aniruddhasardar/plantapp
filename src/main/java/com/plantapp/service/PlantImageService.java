@@ -5,26 +5,39 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.plantapp.dto.PlantImageDTO;
 import com.plantapp.entity.PlantImage;
+import com.plantapp.mapper.PlantImageMapper;
 import com.plantapp.repository.PlantImageRepository;
+import com.plantapp.service.generic.GenericServiceImpl;
 
 @Service
-public class PlantImageService {
+public class PlantImageService extends GenericServiceImpl<PlantImage, Integer> {
 
     @Autowired
     private PlantImageRepository repository;
 
-    public PlantImage saveImage(Integer plantId, String imageUrl) {
-
-        PlantImage img = new PlantImage();
-        img.setPlantId(plantId);
-        img.setImageUrl(imageUrl);
-        img.setIsPrimary(false);
-
-        return repository.save(img);
+    public PlantImageService(PlantImageRepository repository) {
+        super(repository);
+        this.repository = repository;
     }
 
-    public List<PlantImage> getByPlant(Integer plantId) {
-        return repository.findByPlantId(plantId);
+    public List<PlantImageDTO> getByPlant(Integer plantId) {
+        return repository.findByPlantId(plantId)
+                .stream()
+                .map(PlantImageMapper::toDTO)
+                .toList();
+    }
+
+    public void setPrimary(Integer imageId) {
+
+        PlantImage image = getById(imageId);
+
+        List<PlantImage> images = repository.findByPlantId(image.getPlantId());
+        images.forEach(i -> i.setIsPrimary(false));
+        repository.saveAll(images);
+
+        image.setIsPrimary(true);
+        repository.save(image);
     }
 }
