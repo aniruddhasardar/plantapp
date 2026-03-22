@@ -17,6 +17,14 @@ public class PlantImageService extends GenericServiceImpl<PlantImage, Integer> {
     @Autowired
     private PlantImageRepository repository;
 
+    public PlantImageDTO addImage(PlantImageDTO dto) {
+        PlantImage entity = PlantImageMapper.toEntity(dto);
+        if (repository.findByPlantId(dto.plantId).isEmpty()) {
+            entity.setIsPrimary(true);
+        }
+        return PlantImageMapper.toDTO(create(entity)); // reuse generic
+    }
+
     public PlantImageService(PlantImageRepository repository) {
         super(repository);
         this.repository = repository;

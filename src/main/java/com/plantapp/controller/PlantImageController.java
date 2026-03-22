@@ -7,30 +7,37 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.plantapp.dto.PlantImageDTO;
 import com.plantapp.entity.PlantImage;
 import com.plantapp.service.PlantImageService;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/api/images")
+@RequiredArgsConstructor
 public class PlantImageController {
 
-    @Autowired
-    private PlantImageService service;
+    private final PlantImageService service;
 
-    @PostMapping("/upload")
-    public ResponseEntity<?> upload(
-            @RequestParam Integer plantId,
-            @RequestParam String imageUrl
-    ) {
-        return ResponseEntity.ok(service.saveImage(plantId, imageUrl));
+    @PostMapping
+    public PlantImageDTO add(@RequestBody PlantImageDTO dto) {
+        return service.addImage(dto);
     }
 
     @GetMapping("/{plantId}")
-    public List<PlantImage> getImages(@PathVariable Integer plantId) {
+    public List<PlantImageDTO> get(@PathVariable Integer plantId) {
         return service.getByPlant(plantId);
+    }
+
+    @PutMapping("/primary/{imageId}")
+    public void setPrimary(@PathVariable Integer imageId) {
+        service.setPrimary(imageId);
     }
 }
