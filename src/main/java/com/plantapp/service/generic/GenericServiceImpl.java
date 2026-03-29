@@ -3,6 +3,7 @@ package com.plantapp.service.generic;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.plantapp.entity.BaseEntity;
+import com.plantapp.exception.ResourceNotFoundException;
 import com.plantapp.repository.base.BaseRepository;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class GenericServiceImpl<T extends BaseEntity, ID> implements GenericServ
     @Override
     public T update(ID id, T entity) {
         if (!repository.existsById(id)) {
-            throw new RuntimeException("Record not found");
+            throw new ResourceNotFoundException("Record not found");
         }
 
         entity.setId((Integer) id); // works for your case
@@ -33,7 +34,7 @@ public class GenericServiceImpl<T extends BaseEntity, ID> implements GenericServ
     @Override
     public T getById(ID id) {
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Record not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Record not found"));
     }
 
     @Override
