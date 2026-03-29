@@ -22,8 +22,9 @@ public class GenericServiceImpl<T extends BaseEntity, ID> implements GenericServ
 
     @Override
     public T update(ID id, T entity) {
-        T existing = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Record not found"));
+        if (!repository.existsById(id)) {
+            throw new RuntimeException("Record not found");
+        }
 
         entity.setId((Integer) id); // works for your case
         return repository.save(entity);
