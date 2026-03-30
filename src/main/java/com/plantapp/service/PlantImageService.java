@@ -19,7 +19,7 @@ public class PlantImageService extends GenericServiceImpl<PlantImage, Integer> {
 
     public PlantImageDTO addImage(PlantImageDTO dto) {
         PlantImage entity = PlantImageMapper.toEntity(dto);
-        if (repository.findByPlantId(dto.plantId).isEmpty()) {
+        if (repository.findByPlantId(dto.getPlantId()).isEmpty()) {
             entity.setIsPrimary(true);
         }
         return PlantImageMapper.toDTO(create(entity)); // reuse generic

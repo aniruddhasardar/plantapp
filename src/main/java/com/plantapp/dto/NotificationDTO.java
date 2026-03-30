@@ -1,9 +1,14 @@
 package com.plantapp.dto;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 
 public class NotificationDTO {
-    public Integer id;
-    public Integer plantId;
-    public Integer eventTypeId;
-    public String message;
-    public String dueDate;
+    private Integer id;
+    private Integer plantId;
+    private Integer eventTypeId;
+    private String message;
+    private String dueDate;
 }

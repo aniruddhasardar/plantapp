@@ -9,10 +9,10 @@ public class UserMapper {
         if (entity == null) return null;
 
         UserDTO dto = new UserDTO();
-        dto.id = entity.getId();
-        dto.username = entity.getUsername();
-        dto.email = entity.getEmail();
-        dto.role = entity.getRole();
+        dto.setId (entity.getId());
+        dto.setUsername (entity.getUsername());
+        dto.setEmail (entity.getEmail());
+        dto.setRole(entity.getRole());
 
         return dto;
     }
@@ -21,10 +21,10 @@ public class UserMapper {
         if (dto == null) return null;
 
         AppUser entity = new AppUser();
-        entity.setId(dto.id);
-        entity.setUsername(dto.username);
-        entity.setEmail(dto.email);
-        entity.setRole(dto.role);
+        entity.setId(dto.getId());
+        entity.setUsername(dto.getUsername());
+        entity.setEmail(dto.getEmail());
+        entity.setRole(dto.getRole());
 
         return entity;
     }

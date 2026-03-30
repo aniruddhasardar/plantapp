@@ -1,8 +1,13 @@
 package com.plantapp.dto;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 
 public class PlantDTO {
-    public Integer id;
-    public String commonName;
-    public String scientificName;
-    public String plantType;
+    private Integer id;
+    private String commonName;
+    private String scientificName;
+    private String plantType;
 }

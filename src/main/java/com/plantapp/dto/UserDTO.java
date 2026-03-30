@@ -1,8 +1,13 @@
 package com.plantapp.dto;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 
 public class UserDTO {
-    public Integer id;
-    public String username;
-    public String email;
-    public String role;
+    private Integer id;
+    private String username;
+    private String email;
+    private String role;
 }

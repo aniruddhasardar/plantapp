@@ -11,13 +11,13 @@ public class NotificationMapper {
         if (entity == null) return null;
 
         NotificationDTO dto = new NotificationDTO();
-        dto.id = entity.getId();
-        dto.plantId = entity.getPlantId();
-        dto.eventTypeId = entity.getEventTypeId();
-        dto.message = entity.getMessage();
-        dto.dueDate = entity.getDueDate() != null
+        dto.setId (entity.getId());
+        dto.setPlantId (entity.getPlantId());
+        dto.setEventTypeId (entity.getEventTypeId());
+        dto.setMessage (entity.getMessage());
+        dto.setDueDate (entity.getDueDate() != null
                 ? entity.getDueDate().toString()
-                : null;
+                : null);
 
         return dto;
     }
@@ -26,13 +26,13 @@ public class NotificationMapper {
         if (dto == null) return null;
 
         Notification entity = new Notification();
-        entity.setId(dto.id);
-        entity.setPlantId(dto.plantId);
-        entity.setEventTypeId(dto.eventTypeId);
-        entity.setMessage(dto.message);
+        entity.setId(dto.getId());
+        entity.setPlantId(dto.getPlantId());
+        entity.setEventTypeId(dto.getEventTypeId());
+        entity.setMessage(dto.getMessage());
 
-        if (dto.dueDate != null) {
-            entity.setDueDate(LocalDateTime.parse(dto.dueDate));
+        if (dto.getDueDate() != null) {
+            entity.setDueDate(LocalDateTime.parse(dto.getDueDate()));
         }
 
         return entity;

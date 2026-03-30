@@ -1,8 +1,13 @@
 package com.plantapp.dto;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 
 public class PlantImageDTO {
-    public Integer id;
-    public Integer plantId;
-    public String imageUrl;
-    public Boolean isPrimary;
+    private Integer id;
+    private Integer plantId;
+    private String imageUrl;
+    private Boolean isPrimary;
 }

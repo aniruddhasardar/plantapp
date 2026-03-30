@@ -9,10 +9,10 @@ public class EventMapper {
         if (entity == null) return null;
 
         EventDTO dto = new EventDTO();
-        dto.id = entity.getId();
-        dto.plantId = entity.getPlantId();
-        dto.eventTypeId = entity.getEventTypeId();
-        dto.notes = entity.getNotes();
+        dto.setId (entity.getId());
+        dto.setPlantId (entity.getPlantId());
+        dto.setEventTypeId (entity.getEventTypeId());
+        dto.setNotes (entity.getNotes());
 
         return dto;
     }
@@ -21,10 +21,10 @@ public class EventMapper {
         if (dto == null) return null;
 
         PlantEvent entity = new PlantEvent();
-        entity.setId(dto.id);
-        entity.setPlantId(dto.plantId);
-        entity.setEventTypeId(dto.eventTypeId);
-        entity.setNotes(dto.notes);
+        entity.setId(dto.getId());
+        entity.setPlantId(dto.getPlantId());
+        entity.setEventTypeId(dto.getEventTypeId());
+        entity.setNotes(dto.getNotes());
 
         return entity;
     }

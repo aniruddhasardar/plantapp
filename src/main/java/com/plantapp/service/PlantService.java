@@ -38,9 +38,9 @@ public class PlantService extends GenericServiceImpl<Plant, Integer> {
     public PlantDTO updateDTO(Integer id, PlantDTO dto) {
         Plant entity = getById(id);
 
-        entity.setCommonName(dto.commonName);
-        entity.setScientificName(dto.scientificName);
-        entity.setPlantType(dto.plantType);
+        entity.setCommonName(dto.getCommonName());
+        entity.setScientificName(dto.getScientificName());
+        entity.setPlantType(dto.getPlantType());
 
         return PlantMapper.toDTO(update(id, entity));
     }

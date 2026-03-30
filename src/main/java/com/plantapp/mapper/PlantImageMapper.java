@@ -9,10 +9,10 @@ public class PlantImageMapper {
         if (entity == null) return null;
 
         PlantImageDTO dto = new PlantImageDTO();
-        dto.id = entity.getId();
-        dto.plantId = entity.getPlantId();
-        dto.imageUrl = entity.getImageUrl();
-        dto.isPrimary = entity.getIsPrimary();
+        dto.setId (entity.getId());
+        dto.setPlantId (entity.getPlantId());
+        dto.setImageUrl (entity.getImageUrl());
+        dto.setIsPrimary (entity.getIsPrimary());
 
         return dto;
     }
@@ -21,10 +21,10 @@ public class PlantImageMapper {
         if (dto == null) return null;
 
         PlantImage entity = new PlantImage();
-        entity.setId(dto.id);
-        entity.setPlantId(dto.plantId);
-        entity.setImageUrl(dto.imageUrl);
-        entity.setIsPrimary(dto.isPrimary);
+        entity.setId(dto.getId());
+        entity.setPlantId(dto.getPlantId());
+        entity.setImageUrl(dto.getImageUrl());
+        entity.setIsPrimary(dto.getIsPrimary());
 
         return entity;
     }

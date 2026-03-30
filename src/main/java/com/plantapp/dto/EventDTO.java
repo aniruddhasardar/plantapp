@@ -1,8 +1,13 @@
 package com.plantapp.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class EventDTO {
-    public Integer id;
-    public Integer plantId;
-    public Integer eventTypeId;
-    public String notes;
+    private Integer id;
+    private Integer plantId;
+    private Integer eventTypeId;
+    private String notes;
 }

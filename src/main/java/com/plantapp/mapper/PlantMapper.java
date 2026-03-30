@@ -12,10 +12,10 @@ public class PlantMapper {
         if (entity == null) return null;
 
         PlantDTO dto = new PlantDTO();
-        dto.id = entity.getId();
-        dto.commonName = entity.getCommonName();
-        dto.scientificName = entity.getScientificName();
-        dto.plantType = entity.getPlantType();
+        dto.setId(entity.getId());
+        dto.setCommonName (entity.getCommonName());
+        dto.setScientificName (entity.getScientificName());
+        dto.setPlantType (entity.getPlantType());
 
         return dto;
     }
@@ -24,10 +24,10 @@ public class PlantMapper {
         if (dto == null) return null;
 
         Plant entity = new Plant();
-        entity.setId(dto.id);
-        entity.setCommonName(dto.commonName);
-        entity.setScientificName(dto.scientificName);
-        entity.setPlantType(dto.plantType);
+        entity.setId(dto.getId());
+        entity.setCommonName(dto.getCommonName());
+        entity.setScientificName(dto.getScientificName());
+        entity.setPlantType(dto.getPlantType());
 
         return entity;
     }
