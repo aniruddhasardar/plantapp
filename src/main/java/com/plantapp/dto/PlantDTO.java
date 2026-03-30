@@ -10,4 +10,5 @@ public class PlantDTO {
     private String commonName;
     private String scientificName;
     private String plantType;
+    private String family;
 }

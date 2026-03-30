@@ -1,5 +1,7 @@
 package com.plantapp.mapper;
 
+import java.time.LocalDateTime;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,6 +18,7 @@ public class PlantMapper {
         dto.setCommonName (entity.getCommonName());
         dto.setScientificName (entity.getScientificName());
         dto.setPlantType (entity.getPlantType());
+        dto.setFamily(entity.getFamily());
 
         return dto;
     }
@@ -28,6 +31,8 @@ public class PlantMapper {
         entity.setCommonName(dto.getCommonName());
         entity.setScientificName(dto.getScientificName());
         entity.setPlantType(dto.getPlantType());
+        entity.setFamily(dto.getFamily());
+        entity.setCreatedAt(LocalDateTime.now());
 
         return entity;
     }
